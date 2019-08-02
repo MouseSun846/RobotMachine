@@ -6,6 +6,8 @@ import com.example.robotmachine.Util.Util;
 import java.nio.FloatBuffer;
 
 public class Model {
+    //模型序号
+    public int order;
     //三角面 个数
     private int facetCount;
     //顶点坐标数组
@@ -19,12 +21,15 @@ public class Model {
     //顶点数组对应的法向量转换而来的Buffer
     private FloatBuffer vnormBuffer;
     //以下分别保存所有点在x、y、z方向上的最大值、最小值
-    float maxX;
-    float minX;
-    float maxY;
-    float minY;
-    float maxZ;
-    float minZ;
+    public float maxX;
+    public float minX;
+    public float maxY;
+    public float minY;
+    public float maxZ;
+    public float minZ;
+    public Point mDegree = new Point(0f,0f,0f);
+    //移动模型的中心点
+    public Point mMovePoint = new Point(0f,0f,0f);
     //返回模型的中心点
     public Point getCenterPoint(){
         float cx = minX + (maxX - minX) / 2;
@@ -76,6 +81,22 @@ public class Model {
 
     public FloatBuffer getVertBuffer() {
         return vertBuffer;
+    }
+
+    public void setmDegree(Point mDegree){this.mDegree = mDegree;}
+
+    public Point getmDegree(){
+        return mDegree;
+    }
+
+    public void setmMovePoint(Point mMovePoint){this.mMovePoint = mMovePoint;}
+
+    public Point getmMovePoint(){return mMovePoint;}
+
+    public void setOrder(int order){this.order = order;}
+
+    public int getOrder() {
+        return order;
     }
 
     @Override

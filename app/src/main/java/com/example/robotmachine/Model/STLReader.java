@@ -132,7 +132,25 @@ public class STLReader {
         model.setRemarks(remarks);
 
     }
+    private void parseTexture(Model model, byte[] textureBytes) {
+        int facetCount = model.getFaceCount();
+        // 三角面个数有三个顶点，一个顶点对应纹理二维坐标
+        float[] textures = new float[facetCount * 3 * 2];
+        int textureOffset = 0;
+        for (int i = 0; i < facetCount * 3; i++) {
+            //第i个顶点对应的纹理坐标
+            //tx和ty的取值范围为[0,1],表示的坐标位置是在纹理图片上的对应比例
+            float tx = Util.byte4ToFloat(textureBytes, textureOffset);
+            float ty = Util.byte4ToFloat(textureBytes, textureOffset + 4);
 
+            textures[i * 2] = tx;
+            //我们的pxy文件原点是在左下角，因此需要用1减去y坐标值
+            textures[i * 2 + 1] = 1 - ty;
+
+            textureOffset += 8;
+        }
+//        model.setTextures(textures);
+    }
 
     public static interface StlLoadListener{
         void onStart();

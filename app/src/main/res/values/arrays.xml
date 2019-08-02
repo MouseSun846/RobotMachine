@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="link">
+        <item>base_link.STL</item>
+        <item>Link1.STL</item>
+        <item>Link2.STL</item>
+        <item>Link3.STL</item>
+        <item>Link4.STL</item>
+        <item>Link5.STL</item>
+        <item>Link6.STL</item>
+        <item>left_grip.STL</item>
+        <item>right_grip.STL</item>
+    </string-array>
+</resources>
